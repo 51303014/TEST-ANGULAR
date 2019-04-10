@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/styles/material';
+@import '/assets/styles/main';
+@import '/assets/styles/utils';
+@import '/assets/styles/responsive';
+
+.mat-button {
+  text-transform: uppercase;
+}

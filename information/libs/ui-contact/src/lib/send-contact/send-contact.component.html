@@ -1,0 +1,48 @@
+<contact-topnav></contact-topnav>
+  <form [formGroup]="form">
+    <mat-card class="text-center">
+      <h2 class="my-4">Thông tin liên hệ</h2>
+
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Họ và tên</mat-label>
+        <input class="capitalize" contactCharacters matInput formControlName="fullName"/>
+        <mat-error>Vui lòng nhập tối thiểu 3 kí tự</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Số điện thoại</mat-label>
+        <input class="right-align" type="number" formControlName="mobile" matInput >
+        <mat-error>{{form.controls.mobile.getError('phoneNotFormat')}}</mat-error>
+      </mat-form-field>
+
+        <mat-label>Chứng minh nhân dân</mat-label>
+      <contact-upload-image  formControlName="idCard" [progress]="progress"></contact-upload-image>
+      <div class="invalid-feedback" style="display: block; color: red; font-size: 12px">
+        <ng-container *ngIf="form.controls.idCard.hasError('requireSizeType')">{{form.controls.idCard.getError('requireSizeType')}}</ng-container>
+      </div>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Ngày sinh</mat-label>
+        <input formControlName="dob"
+          matInput
+          [matDatepicker]="picker"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error>Vui lòng nhập ngày sinh</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea formControlName="content" maxlength="100" minlength="10" matInput placeholder="Nội dung"></textarea>
+        <mat-error>Vui lòng nhập tối thiểu 10 ký tự và tối đa là 100 ký tự</mat-error>
+      </mat-form-field>
+
+      <mat-card-actions align="end">
+        <button mat-raised-button (click)="submit()" [disabled]="!form.valid">GỬI THÔNG TIN</button>
+        <button mat-button (click)="resetForm()">HUỶ BỎ</button>
+      </mat-card-actions>
+
+    </mat-card>
+  </form>
+
+  <router-outlet></router-outlet>

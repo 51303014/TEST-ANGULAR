@@ -1,0 +1,30 @@
+:host {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #f5f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  margin-right: 50px;
+}
+
+// Form field
+.mat-form-field {
+  width: 100%;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+input.right-align::-webkit-outer-spin-button,
+input.right-align::-webkit-inner-spin-button {
+  display: none;
+}

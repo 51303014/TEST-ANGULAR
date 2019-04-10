@@ -1,0 +1,144 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "",
+  "projects": {
+    "contact": {
+      "root": "apps/contact/",
+      "sourceRoot": "apps/contact/src",
+      "projectType": "application",
+      "prefix": "apps/contact",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/contact",
+            "index": "apps/contact/src/index.html",
+            "main": "apps/contact/src/main.ts",
+            "polyfills": "apps/contact/src/polyfills.ts",
+            "tsConfig": "apps/contact/tsconfig.app.json",
+            "assets": [
+              "apps/contact/src/favicon.ico",
+              "apps/contact/src/assets"
+            ],
+            "styles": [
+              "apps/contact/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/contact/src/environments/environment.ts",
+                  "with": "apps/contact/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "contact:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "contact:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "contact:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/contact/tsconfig.app.json",
+              "apps/contact/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/contact/jest.config.js",
+            "tsConfig": "apps/contact/tsconfig.spec.json",
+            "setupFile": "apps/contact/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "contact-e2e": {
+      "root": "apps/contact-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ui-contact": {
+      "root": "libs/ui-contact",
+      "sourceRoot": "libs/ui-contact/src",
+      "projectType": "library",
+      "prefix": "contact",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui-contact/tsconfig.lib.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "warnings": {
+      "typescriptMismatch": false,
+      "versionMismatch": false
+    },
+    "defaultCollection": "@nrwl/schematics",
+    "packageManager": "yarn"
+  },
+  "defaultProject": "contact"
+}

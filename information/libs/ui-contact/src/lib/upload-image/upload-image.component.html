@@ -1,0 +1,7 @@
+<div class="file-drop-area" style="margin: 10px 0 10px 0;">
+  <span class="fake-btn">Choose file</span>
+  <span class="file-msg">{{file ? file.name : 'or drag and drop file here' }}</span>
+  <input class="file-input" type="file">
+</div>
+<button *ngIf="imgURL" (click)="preview()"  style="margin: 10px 0 10px 0;" mat-raised-button>Xem lại hình chứng minh</button>
+<contact-progress [progress]="progress"></contact-progress>

@@ -1,0 +1,23 @@
+{
+  "npmScope": "yarn ",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "contact": {
+      "tags": [
+        "y"
+      ]
+    },
+    "contact-e2e": {
+      "tags": []
+    },
+    "ui-contact": {
+      "tags": []
+    }
+  }
+}
